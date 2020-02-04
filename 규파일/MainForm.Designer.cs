@@ -47,11 +47,12 @@ namespace 규파일
 			this.label4 = new System.Windows.Forms.Label();
 			this.textBox1 = new System.Windows.Forms.TextBox();
 			this.label5 = new System.Windows.Forms.Label();
+			this.button6 = new System.Windows.Forms.Button();
 			this.SuspendLayout();
 			// 
 			// button1
 			// 
-			this.button1.Location = new System.Drawing.Point(12, 12);
+			this.button1.Location = new System.Drawing.Point(12, 40);
 			this.button1.Name = "button1";
 			this.button1.Size = new System.Drawing.Size(106, 23);
 			this.button1.TabIndex = 0;
@@ -61,7 +62,7 @@ namespace 규파일
 			// 
 			// label1
 			// 
-			this.label1.Location = new System.Drawing.Point(124, 17);
+			this.label1.Location = new System.Drawing.Point(124, 45);
 			this.label1.Name = "label1";
 			this.label1.Size = new System.Drawing.Size(500, 18);
 			this.label1.TabIndex = 1;
@@ -69,7 +70,7 @@ namespace 규파일
 			// 
 			// button2
 			// 
-			this.button2.Location = new System.Drawing.Point(12, 41);
+			this.button2.Location = new System.Drawing.Point(12, 69);
 			this.button2.Name = "button2";
 			this.button2.Size = new System.Drawing.Size(106, 23);
 			this.button2.TabIndex = 2;
@@ -79,7 +80,7 @@ namespace 규파일
 			// 
 			// label2
 			// 
-			this.label2.Location = new System.Drawing.Point(124, 46);
+			this.label2.Location = new System.Drawing.Point(124, 74);
 			this.label2.Name = "label2";
 			this.label2.Size = new System.Drawing.Size(500, 18);
 			this.label2.TabIndex = 3;
@@ -87,7 +88,7 @@ namespace 규파일
 			// 
 			// button3
 			// 
-			this.button3.Location = new System.Drawing.Point(12, 70);
+			this.button3.Location = new System.Drawing.Point(12, 98);
 			this.button3.Name = "button3";
 			this.button3.Size = new System.Drawing.Size(106, 23);
 			this.button3.TabIndex = 4;
@@ -97,7 +98,7 @@ namespace 규파일
 			// 
 			// label3
 			// 
-			this.label3.Location = new System.Drawing.Point(124, 75);
+			this.label3.Location = new System.Drawing.Point(124, 103);
 			this.label3.Name = "label3";
 			this.label3.Size = new System.Drawing.Size(500, 18);
 			this.label3.TabIndex = 5;
@@ -105,7 +106,7 @@ namespace 규파일
 			// 
 			// button4
 			// 
-			this.button4.Location = new System.Drawing.Point(12, 128);
+			this.button4.Location = new System.Drawing.Point(12, 174);
 			this.button4.Name = "button4";
 			this.button4.Size = new System.Drawing.Size(87, 42);
 			this.button4.TabIndex = 6;
@@ -115,7 +116,7 @@ namespace 규파일
 			// 
 			// button5
 			// 
-			this.button5.Location = new System.Drawing.Point(12, 227);
+			this.button5.Location = new System.Drawing.Point(214, 4);
 			this.button5.Name = "button5";
 			this.button5.Size = new System.Drawing.Size(106, 23);
 			this.button5.TabIndex = 7;
@@ -125,7 +126,7 @@ namespace 규파일
 			// 
 			// label4
 			// 
-			this.label4.Location = new System.Drawing.Point(12, 102);
+			this.label4.Location = new System.Drawing.Point(12, 134);
 			this.label4.Name = "label4";
 			this.label4.Size = new System.Drawing.Size(146, 14);
 			this.label4.TabIndex = 8;
@@ -133,7 +134,7 @@ namespace 규파일
 			// 
 			// textBox1
 			// 
-			this.textBox1.Location = new System.Drawing.Point(164, 96);
+			this.textBox1.Location = new System.Drawing.Point(164, 131);
 			this.textBox1.Name = "textBox1";
 			this.textBox1.Size = new System.Drawing.Size(301, 21);
 			this.textBox1.TabIndex = 9;
@@ -142,11 +143,21 @@ namespace 규파일
 			// 
 			// label5
 			// 
-			this.label5.Location = new System.Drawing.Point(124, 232);
+			this.label5.Location = new System.Drawing.Point(12, 4);
 			this.label5.Name = "label5";
-			this.label5.Size = new System.Drawing.Size(146, 14);
+			this.label5.Size = new System.Drawing.Size(196, 28);
 			this.label5.TabIndex = 10;
+			this.label5.Text = "저장시작은 다른걸 모두 완료한 뒤 \r\n눌러주세요. 시간이 조금 걸립니다.";
 			this.label5.Click += new System.EventHandler(this.Label5Click);
+			// 
+			// button6
+			// 
+			this.button6.Location = new System.Drawing.Point(326, 4);
+			this.button6.Name = "button6";
+			this.button6.Size = new System.Drawing.Size(129, 23);
+			this.button6.TabIndex = 11;
+			this.button6.Text = "규파일이 처음입니다.";
+			this.button6.UseVisualStyleBackColor = true;
 			// 
 			// MainForm
 			// 
@@ -154,6 +165,7 @@ namespace 규파일
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
 			this.ClientSize = new System.Drawing.Size(916, 262);
+			this.Controls.Add(this.button6);
 			this.Controls.Add(this.label5);
 			this.Controls.Add(this.textBox1);
 			this.Controls.Add(this.label4);
@@ -168,9 +180,11 @@ namespace 규파일
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
 			this.Name = "MainForm";
 			this.Text = "규파일";
+			this.Load += new System.EventHandler(this.MainFormLoad);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 		}
+		private System.Windows.Forms.Button button6;
 		private System.Windows.Forms.Label label5;
 		private System.Windows.Forms.TextBox textBox1;
 		private System.Windows.Forms.Label label4;

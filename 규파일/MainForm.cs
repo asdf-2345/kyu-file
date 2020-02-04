@@ -35,6 +35,7 @@ namespace 규파일
 		string fileName = "";
 		string txtName = "";
 		string extensionName = "";
+		string kyuTxt = "";
 		void Button1Click(object sender, EventArgs e)
 		{
 			FolderBrowserDialog dialog = new FolderBrowserDialog();
@@ -63,6 +64,12 @@ namespace 규파일
 
             txtName = ofd.FileName;
             label3.Text = "'규파일.txt'를 찾아 선택해주세요. 현재 선택된 파일 : " + txtName;
+            if(txtName.Contains("규파일") == true){
+            	kyuTxt = File.ReadAllText(@"경로");
+            }
+            else{
+            	MessageBox.Show("선택하신 파일이 규파일이 맞습니까?", "다시 선택해주십시오");
+            }
 		}
 		
 		void Button4Click(object sender, EventArgs e)
@@ -72,7 +79,7 @@ namespace 규파일
 		
 		void Button5Click(object sender, EventArgs e)
 		{
-			string copyFlie = Folderposition + "\\ 1" + extensionName;
+			string copyFlie = Folderposition + "\\1" + extensionName;
 			label5.Text = copyFlie;
 			System.IO.File.Copy(fileName, copyFlie, false);
 		}
@@ -83,6 +90,11 @@ namespace 규파일
 		}
 		
 		void Label5Click(object sender, EventArgs e)
+		{
+			
+		}
+		
+		void MainFormLoad(object sender, EventArgs e)
 		{
 			
 		}
