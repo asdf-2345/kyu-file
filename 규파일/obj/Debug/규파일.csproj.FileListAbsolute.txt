@@ -1,0 +1,8 @@
+F:\a\규파일\규파일\bin\Debug\규파일.exe.config
+F:\a\규파일\규파일\bin\Debug\규파일.exe
+F:\a\규파일\규파일\bin\Debug\규파일.pdb
+F:\a\규파일\규파일\obj\Debug\규파일.csprojResolveAssemblyReference.cache
+F:\a\규파일\규파일\obj\Debug\규파일.MainForm.resources
+F:\a\규파일\규파일\obj\Debug\규파일.csproj.GenerateResource.Cache
+F:\a\규파일\규파일\obj\Debug\규파일.exe
+F:\a\규파일\규파일\obj\Debug\규파일.pdb
