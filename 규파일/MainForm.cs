@@ -30,5 +30,38 @@ namespace 규파일
 			// TODO: Add constructor code after the InitializeComponent() call.
 			//
 		}
+		
+		string Folderposition = "";
+		string fileName ="";
+		string txtName ="";
+		void Button1Click(object sender, EventArgs e)
+		{
+			FolderBrowserDialog dialog = new FolderBrowserDialog();
+			dialog.ShowDialog();
+			Folderposition = dialog.SelectedPath;
+			label1.Text = "현재위치 : " + Folderposition;
+		}
+		
+		void Button2Click(object sender, EventArgs e)
+		{
+			OpenFileDialog ofd = new OpenFileDialog();
+
+            ofd.Filter = "모든 파일 (*.*) | *.*";
+            ofd.ShowDialog();
+
+            fileName = ofd.FileName;
+            label2.Text = "현재 선택한 파일 : " + fileName;
+		}
+		
+		void Button3Click(object sender, EventArgs e)
+		{
+			OpenFileDialog ofd = new OpenFileDialog();
+
+            ofd.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
+            ofd.ShowDialog();
+
+            txtName = ofd.FileName;
+            label2.Text = "현재 선택한 파일 : " + fileName;
+		}
 	}
 }
