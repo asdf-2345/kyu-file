@@ -32,8 +32,9 @@ namespace 규파일
 		}
 		
 		string Folderposition = "";
-		string fileName ="";
-		string txtName ="";
+		string fileName = "";
+		string txtName = "";
+		string extensionName = "";
 		void Button1Click(object sender, EventArgs e)
 		{
 			FolderBrowserDialog dialog = new FolderBrowserDialog();
@@ -61,7 +62,29 @@ namespace 규파일
             ofd.ShowDialog();
 
             txtName = ofd.FileName;
-            label2.Text = "현재 선택한 파일 : " + fileName;
+            label3.Text = "'규파일.txt'를 찾아 선택해주세요. 현재 선택된 파일 : " + txtName;
+		}
+		
+		void Button4Click(object sender, EventArgs e)
+		{
+			
+		}
+		
+		void Button5Click(object sender, EventArgs e)
+		{
+			string copyFlie = Folderposition + "\\ 1" + extensionName;
+			label5.Text = copyFlie;
+			System.IO.File.Copy(fileName, copyFlie, false);
+		}
+		
+		void TextBox1TextChanged(object sender, EventArgs e)
+		{
+			extensionName = textBox1.Text;
+		}
+		
+		void Label5Click(object sender, EventArgs e)
+		{
+			
 		}
 	}
 }
