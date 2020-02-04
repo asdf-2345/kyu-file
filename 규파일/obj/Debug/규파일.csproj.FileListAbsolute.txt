@@ -6,3 +6,4 @@ F:\a\규파일\규파일\obj\Debug\규파일.MainForm.resources
 F:\a\규파일\규파일\obj\Debug\규파일.csproj.GenerateResource.Cache
 F:\a\규파일\규파일\obj\Debug\규파일.exe
 F:\a\규파일\규파일\obj\Debug\규파일.pdb
+F:\a\규파일\규파일\obj\Debug\규파일.Form1.resources
