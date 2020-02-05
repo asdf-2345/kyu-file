@@ -10,7 +10,6 @@ using System;
 using System.Drawing;
 using System.Windows.Forms;
 using System.Collections.Generic;
-
 namespace 규파일
 {
 	public partial class Form1 : Form
@@ -39,21 +38,8 @@ namespace 규파일
 			textBox2.ScrollBars = ScrollBars.Vertical;
 			for(int a = 0; a < KyuTxt.Length; a++){
 				textBox2.AppendText(KyuTxt[a] + "\n");
-			}
-			
-			Graphics g = this.panel1.CreateGraphics();
-            Pen p = new Pen(Color.Blue, 3);
-
-			Console.WriteLine(KyuTxt.Length);
-			for(int a = 0; a < KyuTxt.Length; a++){
-				string[] str = KyuTxt[a].Split(' ');
-				Console.WriteLine(str[0]);
-				int num = int.Parse(str[0]);
-				int y = 10; // y는 아직 안씀
-				int x = 10 + 100 * a;
-				Rectangle rec = new Rectangle(10, 10, 100, 20);
-           		g.DrawRectangle(p, rec);
-			}            
+			}	
+			Console.WriteLine(KyuTxt.Length);   
 		}
 		
 		void Button1Click(object sender, EventArgs e)
@@ -79,7 +65,20 @@ namespace 규파일
 		
 		void Panel1Paint(object sender, PaintEventArgs e)
 		{
-			
+			Graphics g = this.panel1.CreateGraphics();
+
+            SolidBrush b = new SolidBrush(Color.Blue);
+            
+			for(int a = 0; a < KyuTxt.Length; a++){
+				string[] str = KyuTxt[a].Split(' ');
+				Console.WriteLine(str[0]);
+				int num = int.Parse(str[0]);
+				int y = 10; // y는 아직 안씀
+				int x = 10 + 50 * a;
+				
+				Rectangle rec = new Rectangle(x, y, 40, 20);
+            	g.FillRectangle(b, rec);
+			} 
 		}
 	}
 }
