@@ -64,13 +64,15 @@ namespace 규파일
 		
 		void Panel1Paint(object sender, PaintEventArgs e)
 		{
-			int HorizontalScroll = this.HorizontalScroll.Value;
-
 			Graphics g = this.panel1.CreateGraphics();
 			
-			g.Clear(Color.White);
+			g.Clear(Color.White); // 지우고 다시 그려야 전에 있던 도형이 안남아있음
 			Pen p = new Pen(Color.Black, 3);
             
+			SolidBrush b = new SolidBrush(Color.Black);
+			StringFormat drawFormat = new StringFormat();
+			Font drawFont = new Font("바탕", 10);
+			
             panel1.AutoScrollMinSize = new Size(KyuTxt.Length * 50 + 20, 0);
             
 			for(int a = 0; a < KyuTxt.Length; a++){
@@ -78,10 +80,11 @@ namespace 규파일
 				Console.WriteLine(str[0]);
 				int num = int.Parse(str[0]);
 				int y = 10; // y는 아직 안씀
-				int x = (10 + 50 * a) - HorizontalScroll;
+				int x = 10 + 50 * a;
 				
 				Rectangle rec = new Rectangle(x, y, 40, 20);
             	g.DrawRectangle(p, rec);
+            	g.DrawString(num.ToString(), drawFont, b, x, y, drawFormat);
 			}
             Console.WriteLine("Panel1Paint호출됨");
 		}
