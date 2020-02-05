@@ -39,7 +39,6 @@ namespace 규파일
 			for(int a = 0; a < KyuTxt.Length; a++){
 				textBox2.AppendText(KyuTxt[a] + "\n");
 			}	
-			Console.WriteLine(KyuTxt.Length);   
 		}
 		
 		void Button1Click(object sender, EventArgs e)
@@ -65,20 +64,26 @@ namespace 규파일
 		
 		void Panel1Paint(object sender, PaintEventArgs e)
 		{
-			Graphics g = this.panel1.CreateGraphics();
+			int HorizontalScroll = this.HorizontalScroll.Value;
 
-            SolidBrush b = new SolidBrush(Color.Blue);
+			Graphics g = this.panel1.CreateGraphics();
+			
+			g.Clear(Color.White);
+			Pen p = new Pen(Color.Black, 3);
+            
+            panel1.AutoScrollMinSize = new Size(KyuTxt.Length * 50 + 20, 0);
             
 			for(int a = 0; a < KyuTxt.Length; a++){
 				string[] str = KyuTxt[a].Split(' ');
 				Console.WriteLine(str[0]);
 				int num = int.Parse(str[0]);
 				int y = 10; // y는 아직 안씀
-				int x = 10 + 50 * a;
+				int x = (10 + 50 * a) - HorizontalScroll;
 				
 				Rectangle rec = new Rectangle(x, y, 40, 20);
-            	g.FillRectangle(b, rec);
-			} 
+            	g.DrawRectangle(p, rec);
+			}
+            Console.WriteLine("Panel1Paint호출됨");
 		}
 	}
 }

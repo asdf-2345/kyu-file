@@ -45,14 +45,14 @@ namespace 규파일
 			// 
 			// textBox1
 			// 
-			this.textBox1.Location = new System.Drawing.Point(234, 416);
+			this.textBox1.Location = new System.Drawing.Point(234, 559);
 			this.textBox1.Name = "textBox1";
 			this.textBox1.Size = new System.Drawing.Size(76, 21);
 			this.textBox1.TabIndex = 0;
 			// 
 			// button1
 			// 
-			this.button1.Location = new System.Drawing.Point(316, 416);
+			this.button1.Location = new System.Drawing.Point(316, 559);
 			this.button1.Name = "button1";
 			this.button1.Size = new System.Drawing.Size(75, 23);
 			this.button1.TabIndex = 1;
@@ -62,7 +62,7 @@ namespace 규파일
 			// 
 			// label1
 			// 
-			this.label1.Location = new System.Drawing.Point(12, 421);
+			this.label1.Location = new System.Drawing.Point(12, 564);
 			this.label1.Name = "label1";
 			this.label1.Size = new System.Drawing.Size(218, 12);
 			this.label1.TabIndex = 2;
@@ -70,18 +70,20 @@ namespace 규파일
 			// 
 			// textBox2
 			// 
-			this.textBox2.Location = new System.Drawing.Point(12, 267);
+			this.textBox2.Location = new System.Drawing.Point(12, 410);
 			this.textBox2.Multiline = true;
 			this.textBox2.Name = "textBox2";
 			this.textBox2.ReadOnly = true;
-			this.textBox2.Size = new System.Drawing.Size(554, 143);
+			this.textBox2.Size = new System.Drawing.Size(551, 143);
 			this.textBox2.TabIndex = 3;
 			// 
 			// panel1
 			// 
+			this.panel1.AutoScroll = true;
+			this.panel1.BackColor = System.Drawing.Color.White;
 			this.panel1.Location = new System.Drawing.Point(12, 12);
 			this.panel1.Name = "panel1";
-			this.panel1.Size = new System.Drawing.Size(554, 249);
+			this.panel1.Size = new System.Drawing.Size(551, 392);
 			this.panel1.TabIndex = 4;
 			this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel1Paint);
 			// 
@@ -89,7 +91,7 @@ namespace 규파일
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(578, 442);
+			this.ClientSize = new System.Drawing.Size(576, 585);
 			this.Controls.Add(this.textBox2);
 			this.Controls.Add(this.panel1);
 			this.Controls.Add(this.label1);
