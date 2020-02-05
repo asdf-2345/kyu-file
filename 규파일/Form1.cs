@@ -9,6 +9,7 @@
 using System;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Collections.Generic;
 
 namespace 규파일
 {
@@ -36,9 +37,23 @@ namespace 규파일
 		void Form1Load(object sender, EventArgs e)
 		{
 			textBox2.ScrollBars = ScrollBars.Vertical;
-			for(int a = 0; a < kyuTxt.Length; a++){
-				textBox2.AppendText(kyuTxt[a] + "\n");
+			for(int a = 0; a < KyuTxt.Length; a++){
+				textBox2.AppendText(KyuTxt[a] + "\n");
 			}
+			
+			Graphics g = this.panel1.CreateGraphics();
+            Pen p = new Pen(Color.Blue, 3);
+
+			Console.WriteLine(KyuTxt.Length);
+			for(int a = 0; a < KyuTxt.Length; a++){
+				string[] str = KyuTxt[a].Split(' ');
+				Console.WriteLine(str[0]);
+				int num = int.Parse(str[0]);
+				int y = 10; // y는 아직 안씀
+				int x = 10 + 100 * a;
+				Rectangle rec = new Rectangle(10, 10, 100, 20);
+           		g.DrawRectangle(p, rec);
+			}            
 		}
 		
 		void Button1Click(object sender, EventArgs e)
@@ -60,6 +75,11 @@ namespace 규파일
 				MessageBox.Show("숫자만 입력해주세요", "오류");
 				return;
 			}
+		}
+		
+		void Panel1Paint(object sender, PaintEventArgs e)
+		{
+			
 		}
 	}
 }

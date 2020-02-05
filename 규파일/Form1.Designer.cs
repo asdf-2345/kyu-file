@@ -40,6 +40,7 @@ namespace 규파일
 			this.button1 = new System.Windows.Forms.Button();
 			this.label1 = new System.Windows.Forms.Label();
 			this.textBox2 = new System.Windows.Forms.TextBox();
+			this.panel1 = new System.Windows.Forms.Panel();
 			this.SuspendLayout();
 			// 
 			// textBox1
@@ -69,12 +70,20 @@ namespace 규파일
 			// 
 			// textBox2
 			// 
-			this.textBox2.Location = new System.Drawing.Point(12, 12);
+			this.textBox2.Location = new System.Drawing.Point(12, 267);
 			this.textBox2.Multiline = true;
 			this.textBox2.Name = "textBox2";
 			this.textBox2.ReadOnly = true;
-			this.textBox2.Size = new System.Drawing.Size(554, 388);
+			this.textBox2.Size = new System.Drawing.Size(554, 143);
 			this.textBox2.TabIndex = 3;
+			// 
+			// panel1
+			// 
+			this.panel1.Location = new System.Drawing.Point(12, 12);
+			this.panel1.Name = "panel1";
+			this.panel1.Size = new System.Drawing.Size(554, 249);
+			this.panel1.TabIndex = 4;
+			this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel1Paint);
 			// 
 			// Form1
 			// 
@@ -82,6 +91,7 @@ namespace 규파일
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(578, 442);
 			this.Controls.Add(this.textBox2);
+			this.Controls.Add(this.panel1);
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.button1);
 			this.Controls.Add(this.textBox1);
@@ -91,6 +101,7 @@ namespace 규파일
 			this.ResumeLayout(false);
 			this.PerformLayout();
 		}
+		private System.Windows.Forms.Panel panel1;
 		private System.Windows.Forms.TextBox textBox2;
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.Button button1;
