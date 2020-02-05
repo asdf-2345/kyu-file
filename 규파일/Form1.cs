@@ -64,6 +64,8 @@ namespace 규파일
 		
 		void Panel1Paint(object sender, PaintEventArgs e)
 		{
+			int HorizontalScroll = panel1.HorizontalScroll.Value;
+			Console.WriteLine(HorizontalScroll);
 			Graphics g = this.panel1.CreateGraphics();
 			
 			g.Clear(Color.White); // 지우고 다시 그려야 전에 있던 도형이 안남아있음
@@ -77,16 +79,14 @@ namespace 규파일
             
 			for(int a = 0; a < KyuTxt.Length; a++){
 				string[] str = KyuTxt[a].Split(' ');
-				Console.WriteLine(str[0]);
 				int num = int.Parse(str[0]);
 				int y = 10; // y는 아직 안씀
-				int x = 10 + 50 * a;
+				int x = (10 + 50 * a) - HorizontalScroll;
 				
 				Rectangle rec = new Rectangle(x, y, 40, 20);
             	g.DrawRectangle(p, rec);
-            	g.DrawString(num.ToString(), drawFont, b, x, y, drawFormat);
+            	g.DrawString(num.ToString(), drawFont, b, x, y+5, drawFormat);
 			}
-            Console.WriteLine("Panel1Paint호출됨");
 		}
 	}
 }
