@@ -59,6 +59,9 @@ namespace 규파일
             if(txtName.Contains("규파일.txt") == true){
             	MessageBox.Show("선택완료");
             	kyuTxt = File.ReadAllLines(txtName);
+            	string[] str = txtName.Split(new string[] {"규파일.txt"}, StringSplitOptions.None);
+            	extensionName = str[0];
+            	Console.WriteLine(extensionName);
             }
             else{
             	MessageBox.Show("선택하신 파일이 규파일이 맞습니까?", "다시 선택해주십시오");
