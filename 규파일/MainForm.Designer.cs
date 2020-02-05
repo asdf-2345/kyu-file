@@ -49,6 +49,7 @@ namespace 규파일
 			this.label5 = new System.Windows.Forms.Label();
 			this.button6 = new System.Windows.Forms.Button();
 			this.textBox2 = new System.Windows.Forms.TextBox();
+			this.button7 = new System.Windows.Forms.Button();
 			this.SuspendLayout();
 			// 
 			// button1
@@ -111,7 +112,7 @@ namespace 규파일
 			this.button4.Name = "button4";
 			this.button4.Size = new System.Drawing.Size(112, 23);
 			this.button4.TabIndex = 6;
-			this.button4.Text = "이전버전불러오기";
+			this.button4.Text = "전체보기";
 			this.button4.UseVisualStyleBackColor = true;
 			this.button4.Click += new System.EventHandler(this.Button4Click);
 			// 
@@ -170,12 +171,23 @@ namespace 규파일
 			this.textBox2.TabIndex = 12;
 			this.textBox2.Text = "불러온 이전버젼 : ";
 			// 
+			// button7
+			// 
+			this.button7.Location = new System.Drawing.Point(454, 201);
+			this.button7.Name = "button7";
+			this.button7.Size = new System.Drawing.Size(142, 23);
+			this.button7.TabIndex = 13;
+			this.button7.Text = "예전버젼으로 덮어쓰기";
+			this.button7.UseVisualStyleBackColor = true;
+			this.button7.Click += new System.EventHandler(this.Button7Click);
+			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
 			this.ClientSize = new System.Drawing.Size(608, 260);
+			this.Controls.Add(this.button7);
 			this.Controls.Add(this.textBox2);
 			this.Controls.Add(this.button6);
 			this.Controls.Add(this.label5);
@@ -196,6 +208,7 @@ namespace 규파일
 			this.ResumeLayout(false);
 			this.PerformLayout();
 		}
+		private System.Windows.Forms.Button button7;
 		private System.Windows.Forms.TextBox textBox2;
 		private System.Windows.Forms.Button button6;
 		private System.Windows.Forms.Label label5;

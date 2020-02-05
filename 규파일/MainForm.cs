@@ -71,7 +71,8 @@ namespace 규파일
 			form1.kyuTxt = kyuTxt;
 			form1.ShowDialog();
 			
-			changeFileName = form1.fileName;
+			string[] str = form1.fileName.Split('-');
+			changeFileName = str[1].Trim();
 			textBox2.Text = "불러온 이전버젼 : " + changeFileName;
 		}
 		
@@ -109,6 +110,11 @@ namespace 규파일
 		void Button6Click(object sender, EventArgs e) // 규파일이 처음입니다
 		{
 			File.CreateText(Folderposition + "//" + "규파일.txt");
+		}
+		
+		void Button7Click(object sender, EventArgs e) // 파일 덮어쓰기
+		{
+			File.Copy(changeFileName, fileName, true);
 		}
 	}
 }
