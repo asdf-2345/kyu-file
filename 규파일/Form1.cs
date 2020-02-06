@@ -77,15 +77,30 @@ namespace 규파일
 						int branchLength = X[branch[num1]];
 						X[branch[a]] = positionX[num1];
 						x += X[branch[a]] - HorizontalScroll;
+						
+						//선긋기 (위쪽으로)
+						Point point1 = new Point(x + 20, y);
+						Point point2 = new Point(x + 20, y-10);
+						g.DrawLine(p, point1, point2);
 					}
 					else{
 						X[branch[a]] += 50;
 						x += X[branch[a]] - HorizontalScroll;
+						
+						//선긋기 (옆으로)
+						Point point1 = new Point(x + 40, y + 10);
+						Point point2 = new Point(x + 50, y + 10);
+						g.DrawLine(p, point1, point2);
 					}
 				}
 				else{
 					x += X[branch[a]] - HorizontalScroll;
 					X[branch[a]] += 50;
+					
+					//선긋기 (옆으로)
+					Point point1 = new Point(x + 40, y + 10);
+					Point point2 = new Point(x + 50, y + 10);
+					g.DrawLine(p, point1, point2);
 				}
 				
 				positionX[a] = X[branch[a]];
