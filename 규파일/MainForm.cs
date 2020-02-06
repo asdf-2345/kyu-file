@@ -28,12 +28,32 @@ namespace 규파일
 		string extensionName = "";
 		string[] kyuTxt;
 		string changeFileName;
-		void Button1Click(object sender, EventArgs e) // 저장위치지정
+		string comment;
+		int fileNum = 0;
+		
+		void Button1Click(object sender, EventArgs e) // 새로운 분기 생성 - 입력완료
 		{
-			FolderBrowserDialog dialog = new FolderBrowserDialog();
-			dialog.ShowDialog();
-			Folderposition = dialog.SelectedPath;
-			label1.Text = "현재위치 : " + Folderposition;
+			string str = textBox5.Text;
+			try{
+				fileNum = int.Parse(str);
+				try{
+					changeFileName = kyuTxt[fileNum];
+					
+					string[] str2 = changeFileName.Split('-');
+					changeFileName = str2[1].Trim();
+					string[] str3 = txtName.Split(new string[] {"$%^"}, StringSplitOptions.None);
+					changeFileName = str3[0];
+					textBox6.Text = "새로운 가지를 생성할 버젼 : " + changeFileName;
+				}
+				catch{
+					MessageBox.Show("다시입력해주세요", "오류");
+					return;
+				}
+			}
+			catch{
+				MessageBox.Show("숫자만 입력해주세요", "오류");
+				return;
+			}
 		}
 		
 		void Button2Click(object sender, EventArgs e) // 저장파일지정
@@ -57,22 +77,26 @@ namespace 규파일
             txtName = ofd.FileName;
             label3.Text = "'규파일.txt'를 찾아 선택해주세요. 현재 선택된 파일 : " + txtName;
             if(txtName.Contains("규파일.txt") == true){
-            	MessageBox.Show("선택완료");
             	kyuTxt = File.ReadAllLines(txtName);
             	string[] str = txtName.Split(new string[] {"규파일.txt"}, StringSplitOptions.None);
-            	extensionName = str[0];
-            	Console.WriteLine(extensionName);
+            	Folderposition = str[0];
+            	label1.Text = Folderposition;
             }
             else{
             	MessageBox.Show("선택하신 파일이 규파일이 맞습니까?", "다시 선택해주십시오");
             }
 		}
 		
-		void Button4Click(object sender, EventArgs e)//이전버젼 불러오기
+		void Button4Click(object sender, EventArgs e)//버젼 전체보기
 		{
-			Form1 form1 = new Form1();
-			form1.kyuTxt = kyuTxt;
-			form1.Show();
+			try{
+				Form1 form1 = new Form1();
+				form1.kyuTxt = kyuTxt;
+				form1.Show();
+			}
+			catch{
+				MessageBox.Show("규파일.txt를 선택하지 않았습니다.","오류");
+			}
 		}
 		
 		void Button5Click(object sender, EventArgs e) // 저장시작
@@ -80,14 +104,14 @@ namespace 규파일
 			kyuTxt = File.ReadAllLines(txtName);
 			FileName = kyuTxt.Length;
 			
-			string copyFlie = Folderposition + "\\" + FileName + extensionName;
+			string copyFlie = Folderposition + FileName + extensionName;
+			Console.WriteLine(copyFlie);
 			label5.Text = "저장된 파일 : \n" + copyFlie;
 			System.IO.File.Copy(fileName, copyFlie, false);
 			
-			string today = DateTime.Today.ToString();
 			using (StreamWriter outputFile = new StreamWriter(txtName, true))
 			{
-    			outputFile.WriteLine(FileName + " - " + copyFlie);
+    			outputFile.WriteLine(FileName + " - " + copyFlie + @"$%^" + comment);
 			}
 		}
 		
@@ -117,12 +141,18 @@ namespace 규파일
 			
 			File.CreateText(Folderposition + "//" + "규파일.txt");
 			
+			Folderposition = Folderposition + "//" + "규파일.txt" + "//";
 			MessageBox.Show("규파일.txt가 지정하신 위치에 생성되었습니다.");
 		}
 		
-		void Button7Click(object sender, EventArgs e) // 파일 덮어쓰기
+		void Button7Click(object sender, EventArgs e) // 예전버젼 파일 덮어쓰기
 		{
-			File.Copy(changeFileName, fileName, true);
+			try{
+				File.Copy(changeFileName, fileName, true);
+			}
+			catch{
+				MessageBox.Show("저정할 파일을 지정하지 않았거나 불러올 이전버젼을 입력하지 않았습니다.", "오류");
+			}
 		}
 		
 		void Button8Click(object sender, EventArgs e) // 예전버젼 입력완료
@@ -146,6 +176,55 @@ namespace 규파일
 				MessageBox.Show("숫자만 입력해주세요", "오류");
 				return;
 			}			
+		}
+		
+		void Button9Click(object sender, EventArgs e) // 새로운 가지 생성
+		{
+			kyuTxt = File.ReadAllLines(txtName);
+			FileName = kyuTxt.Length;
+								
+			string copyFlie = Folderposition + FileName + extensionName;
+			System.IO.File.Copy(fileName, copyFlie, false);
+			
+			int count = 0;
+			bool isBranchName = false;
+			int[] branch = new int[100];
+			if(kyuTxt[fileNum].Contains("&*(")){
+				char[] asdf = kyuTxt[fileNum].ToCharArray();
+				for(int a = 0; a < asdf.Length; a++){
+					Console.WriteLine("count가 증가하지 않음");
+					if(isBranchName){
+						isBranchName = false;
+						branch[count - 1] = asdf[a];
+					}
+					if(asdf[a] == '&' && asdf[a+1] == '*' && asdf[a+2] == '('){
+						count++;
+						a += 2;
+						isBranchName = true;
+						Console.WriteLine("count가 증가");
+					}
+				}
+			}
+			
+			using (StreamWriter outputFile = new StreamWriter(txtName, true))
+			{
+				if(count != 0){
+					outputFile.Write(FileName + " - " + copyFlie + @"$%^" + comment);
+					for(int a = 0; a < count; a++){
+						outputFile.Write(@"&*(" + branch[a]);
+					}
+					outputFile.Write(@"&*(" + fileNum);
+				}
+				else{
+    				outputFile.Write(FileName + " - " + copyFlie + @"$%^" + comment + @"&*(" + fileNum);
+				}
+    			outputFile.WriteLine();
+			}
+		}
+		
+		void TextBox4TextChanged(object sender, EventArgs e) // 코멘트
+		{
+			comment = textBox4.Text;
 		}
 	}
 }

@@ -37,7 +37,8 @@ namespace 규파일
 		{
 			textBox2.ScrollBars = ScrollBars.Vertical;
 			for(int a = 0; a < KyuTxt.Length; a++){
-				textBox2.AppendText(KyuTxt[a] + "\n");
+				string[] str = KyuTxt[a].Split(new string[] {"$%^"}, StringSplitOptions.None);
+				textBox2.AppendText(a.ToString() + " - " + str[1] + "\n");
 			}	
 		}
 		
@@ -56,16 +57,42 @@ namespace 규파일
 			
             panel1.AutoScrollMinSize = new Size(KyuTxt.Length * 50 + 20, 0);
             
+            int Count = 0;
 			for(int a = 0; a < KyuTxt.Length; a++){
-				string[] str = KyuTxt[a].Split(' ');
-				int num = int.Parse(str[0]);
-				int y = 10; // y는 아직 안씀
-				int x = (10 + 50 * a) - HorizontalScroll;
+            	Console.WriteLine(a);
+				int y = 10;
+				int x = 10;
 				
+				if(KyuTxt[a].Contains("&*(")){
+					string[] str = KyuTxt[a].Split(new string[] {"&*("}, StringSplitOptions.None);
+					int num1 = int.Parse(str[1]);
+					x += 50 * (num1 - Count + 1) - HorizontalScroll;
+					y += count(a) * 50;
+					Console.WriteLine(x + " " +y);
+					
+				}
+				else{
+					x += 50 * (a - Count) - HorizontalScroll;
+				}
 				Rectangle rec = new Rectangle(x, y, 40, 20);
             	g.DrawRectangle(p, rec);
-            	g.DrawString(num.ToString(), drawFont, b, x, y+5, drawFormat);
+            	g.DrawString(a.ToString(), drawFont, b, x, y+5, drawFormat);
 			}
+		}
+		
+		int count(int line){
+			int output = 0;
+			if(kyuTxt[line].Contains("&*(")){
+				char[] asdf = kyuTxt[line].ToCharArray();
+				for(int a = 0; a < asdf.Length; a++){
+					if(asdf[a] == '&' && asdf[a+1] == '*' && asdf[a+2] == '('){
+						output++;
+						a += 2;
+						Console.WriteLine("증가");
+					}
+				}
+			}
+			return output;
 		}
 	}
 }
