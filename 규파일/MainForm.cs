@@ -108,7 +108,16 @@ namespace 규파일
 		
 		void Button6Click(object sender, EventArgs e) // 규파일이 처음입니다
 		{
+			MessageBox.Show("저장소위치를 지정해주세요.");
+			
+			FolderBrowserDialog dialog = new FolderBrowserDialog();
+			dialog.ShowDialog();
+			Folderposition = dialog.SelectedPath;
+			label1.Text = "현재위치 : " + Folderposition;
+			
 			File.CreateText(Folderposition + "//" + "규파일.txt");
+			
+			MessageBox.Show("규파일.txt가 지정하신 위치에 생성되었습니다.");
 		}
 		
 		void Button7Click(object sender, EventArgs e) // 파일 덮어쓰기
