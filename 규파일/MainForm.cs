@@ -139,11 +139,10 @@ namespace 규파일
 			FolderBrowserDialog dialog = new FolderBrowserDialog();
 			dialog.ShowDialog();
 			Folderposition = dialog.SelectedPath;
+			
+			File.CreateText(Folderposition + "\\" + "규파일.txt");
+			Folderposition = Folderposition + "\\";
 			label1.Text = "현재위치 : " + Folderposition;
-			
-			File.CreateText(Folderposition + "//" + "규파일.txt");
-			
-			Folderposition = Folderposition + "//" + "규파일.txt" + "//";
 			MessageBox.Show("규파일.txt가 지정하신 위치에 생성되었습니다.");
 		}
 		

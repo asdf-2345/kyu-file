@@ -22,7 +22,6 @@ namespace 규파일
 		}
 		
 		int[] branch;
-		
 		public Form1()
 		{
 			InitializeComponent();
@@ -62,7 +61,9 @@ namespace 규파일
 			
             panel1.AutoScrollMinSize = new Size(KyuTxt.Length * 50 + 20, branch.Length * 30 + 20);
             
-            int[] Count = new int[branch.Length];
+            int[] X = new int[branch.Length];
+            int[] positionX = new int[branch.Length];
+            bool[] branchCheck = new bool[KyuTxt.Length];
 			for(int a = 0; a < KyuTxt.Length; a++){
             	Console.WriteLine(a);
             	int y = 10 + (branch[a] * 30);
@@ -71,16 +72,24 @@ namespace 규파일
 				if(KyuTxt[a].Contains("&*(")){
 					string[] str = KyuTxt[a].Split(new string[] {"&*("}, StringSplitOptions.None);
 					int num1 = int.Parse(str[1]);
-					Console.WriteLine(50 * Count[branch[num1]] + " " + 50 * Count[branch[a]]);
-					int branchLength = Count[branch[num1]];
-					x += 50 * (branchLength - (branchLength - num1)) + 50 * Count[branch[a]] - HorizontalScroll;
-					Console.WriteLine(x + " " +y);
+					if(branchCheck[branch[a]] == false){
+						branchCheck[branch[a]] = true;
+						int branchLength = X[branch[num1]];
+						X[branch[a]] = positionX[num1];
+						x += X[branch[a]] - HorizontalScroll;
+					}
+					else{
+						X[branch[a]] += 50;
+						x += X[branch[a]] - HorizontalScroll;
+					}
 				}
 				else{
-					x += 50 * Count[branch[a]] - HorizontalScroll;
+					x += X[branch[a]] - HorizontalScroll;
+					X[branch[a]] += 50;
 				}
 				
-				Count[branch[a]]++;
+				positionX[a] = X[branch[a]];
+				Console.WriteLine(x+" "+y);
 				Rectangle rec = new Rectangle(x, y, 40, 20);
             	g.DrawRectangle(p, rec);
             	g.DrawString(a.ToString(), drawFont, b, x, y+5, drawFormat);
