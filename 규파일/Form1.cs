@@ -37,6 +37,13 @@ namespace 규파일
 			}	
 		}
 		
+		void drawLine(int x, int y, Pen p, Graphics g){
+			//선긋기 (옆으로)
+			Point point1 = new Point(x + 40, y + 10);
+			Point point2 = new Point(x + 50, y + 10);
+			g.DrawLine(p, point1, point2);
+		}
+		
 		void Panel1Paint(object sender, PaintEventArgs e)
 		{
 			branch = new int[KyuTxt.Length];
@@ -82,25 +89,21 @@ namespace 규파일
 						Point point1 = new Point(x + 20, y);
 						Point point2 = new Point(x + 20, y-10);
 						g.DrawLine(p, point1, point2);
+						
+						drawLine(x, y, p, g);
 					}
 					else{
 						X[branch[a]] += 50;
 						x += X[branch[a]] - HorizontalScroll;
 						
-						//선긋기 (옆으로)
-						Point point1 = new Point(x + 40, y + 10);
-						Point point2 = new Point(x + 50, y + 10);
-						g.DrawLine(p, point1, point2);
+						drawLine(x, y, p, g);
 					}
 				}
 				else{
 					x += X[branch[a]] - HorizontalScroll;
 					X[branch[a]] += 50;
 					
-					//선긋기 (옆으로)
-					Point point1 = new Point(x + 40, y + 10);
-					Point point2 = new Point(x + 50, y + 10);
-					g.DrawLine(p, point1, point2);
+					drawLine(x, y, p, g);
 				}
 				
 				positionX[a] = X[branch[a]];
