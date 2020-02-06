@@ -41,27 +41,6 @@ namespace 규파일
 			}	
 		}
 		
-		void Button1Click(object sender, EventArgs e)
-		{
-			string fileStr = textBox1.Text;
-			try{
-				int FileNum = int.Parse(fileStr);
-				try{
-					output = kyuTxt[FileNum];
-				}
-				catch{
-					MessageBox.Show("다시입력해주세요", "오류");
-					return;
-				}
-				fileName = output;
-				this.Close();
-			}
-			catch{
-				MessageBox.Show("숫자만 입력해주세요", "오류");
-				return;
-			}
-		}
-		
 		void Panel1Paint(object sender, PaintEventArgs e)
 		{
 			int HorizontalScroll = panel1.HorizontalScroll.Value;

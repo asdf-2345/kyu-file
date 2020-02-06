@@ -72,11 +72,7 @@ namespace 규파일
 		{
 			Form1 form1 = new Form1();
 			form1.kyuTxt = kyuTxt;
-			form1.ShowDialog();
-			
-			string[] str = form1.fileName.Split('-');
-			changeFileName = str[1].Trim();
-			textBox2.Text = "불러온 이전버젼 : " + changeFileName;
+			form1.Show();
 		}
 		
 		void Button5Click(object sender, EventArgs e) // 저장시작
@@ -118,6 +114,29 @@ namespace 규파일
 		void Button7Click(object sender, EventArgs e) // 파일 덮어쓰기
 		{
 			File.Copy(changeFileName, fileName, true);
+		}
+		
+		void Button8Click(object sender, EventArgs e) // 예전버젼 입력완료
+		{
+			string str = textBox3.Text;
+			try{
+				int FileNum = int.Parse(str);
+				try{
+					changeFileName = kyuTxt[FileNum];
+					
+					string[] str2 = changeFileName.Split('-');
+					changeFileName = str2[1].Trim();
+					textBox2.Text = "불러올 이전버젼 : " + changeFileName;
+				}
+				catch{
+					MessageBox.Show("다시입력해주세요", "오류");
+					return;
+				}
+			}
+			catch{
+				MessageBox.Show("숫자만 입력해주세요", "오류");
+				return;
+			}			
 		}
 	}
 }

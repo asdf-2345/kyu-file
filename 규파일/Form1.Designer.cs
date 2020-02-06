@@ -36,37 +36,9 @@ namespace 규파일
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.textBox1 = new System.Windows.Forms.TextBox();
-			this.button1 = new System.Windows.Forms.Button();
-			this.label1 = new System.Windows.Forms.Label();
 			this.textBox2 = new System.Windows.Forms.TextBox();
 			this.panel1 = new System.Windows.Forms.Panel();
 			this.SuspendLayout();
-			// 
-			// textBox1
-			// 
-			this.textBox1.Location = new System.Drawing.Point(234, 559);
-			this.textBox1.Name = "textBox1";
-			this.textBox1.Size = new System.Drawing.Size(76, 21);
-			this.textBox1.TabIndex = 0;
-			// 
-			// button1
-			// 
-			this.button1.Location = new System.Drawing.Point(316, 559);
-			this.button1.Name = "button1";
-			this.button1.Size = new System.Drawing.Size(75, 23);
-			this.button1.TabIndex = 1;
-			this.button1.Text = "입력완료";
-			this.button1.UseVisualStyleBackColor = true;
-			this.button1.Click += new System.EventHandler(this.Button1Click);
-			// 
-			// label1
-			// 
-			this.label1.Location = new System.Drawing.Point(12, 564);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(218, 12);
-			this.label1.TabIndex = 2;
-			this.label1.Text = "불러오실 버전의 숫자를 입력해주세요";
 			// 
 			// textBox2
 			// 
@@ -92,12 +64,9 @@ namespace 규파일
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-			this.ClientSize = new System.Drawing.Size(601, 585);
+			this.ClientSize = new System.Drawing.Size(601, 562);
 			this.Controls.Add(this.textBox2);
 			this.Controls.Add(this.panel1);
-			this.Controls.Add(this.label1);
-			this.Controls.Add(this.button1);
-			this.Controls.Add(this.textBox1);
 			this.Name = "Form1";
 			this.Text = "저장해놓은 버젼 전체보기";
 			this.Load += new System.EventHandler(this.Form1Load);
@@ -106,8 +75,5 @@ namespace 규파일
 		}
 		private System.Windows.Forms.Panel panel1;
 		private System.Windows.Forms.TextBox textBox2;
-		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.Button button1;
-		private System.Windows.Forms.TextBox textBox1;
 	}
 }
