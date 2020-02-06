@@ -59,6 +59,8 @@ namespace 규파일
 			this.button1 = new System.Windows.Forms.Button();
 			this.button9 = new System.Windows.Forms.Button();
 			this.textBox6 = new System.Windows.Forms.TextBox();
+			this.textBox7 = new System.Windows.Forms.TextBox();
+			this.label9 = new System.Windows.Forms.Label();
 			this.SuspendLayout();
 			// 
 			// label1
@@ -267,12 +269,31 @@ namespace 규파일
 			this.textBox6.TabIndex = 22;
 			this.textBox6.Text = "새로운 가지를 생성할 버젼 : ";
 			// 
+			// textBox7
+			// 
+			this.textBox7.Location = new System.Drawing.Point(165, 153);
+			this.textBox7.Name = "textBox7";
+			this.textBox7.Size = new System.Drawing.Size(301, 21);
+			this.textBox7.TabIndex = 25;
+			this.textBox7.Text = "0";
+			this.textBox7.TextChanged += new System.EventHandler(this.TextBox7TextChanged);
+			// 
+			// label9
+			// 
+			this.label9.Location = new System.Drawing.Point(12, 156);
+			this.label9.Name = "label9";
+			this.label9.Size = new System.Drawing.Size(174, 14);
+			this.label9.TabIndex = 24;
+			this.label9.Text = "가지위치를 입력해주세요";
+			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
 			this.ClientSize = new System.Drawing.Size(608, 348);
+			this.Controls.Add(this.textBox7);
+			this.Controls.Add(this.label9);
 			this.Controls.Add(this.button9);
 			this.Controls.Add(this.textBox6);
 			this.Controls.Add(this.label8);
@@ -303,6 +324,8 @@ namespace 규파일
 			this.ResumeLayout(false);
 			this.PerformLayout();
 		}
+		private System.Windows.Forms.Label label9;
+		private System.Windows.Forms.TextBox textBox7;
 		private System.Windows.Forms.TextBox textBox6;
 		private System.Windows.Forms.Button button9;
 		private System.Windows.Forms.Button button1;

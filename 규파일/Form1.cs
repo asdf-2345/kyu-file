@@ -21,12 +21,7 @@ namespace 규파일
     		set {this.KyuTxt = value;}
 		}
 		
-		string output;
-		public string fileName
-		{
-    		get { return this.output; } // Form2에서 얻은(get) 값을 다른폼(Form1)으로 전달 목적
-    		set { this.output = value; }  // 다른폼(Form1)에서 전달받은 값을 쓰기
-		}
+		int[] branch;
 		
 		public Form1()
 		{
@@ -36,6 +31,7 @@ namespace 규파일
 		void Form1Load(object sender, EventArgs e)
 		{
 			textBox2.ScrollBars = ScrollBars.Vertical;
+			
 			for(int a = 0; a < KyuTxt.Length; a++){
 				string[] str = KyuTxt[a].Split(new string[] {"$%^"}, StringSplitOptions.None);
 				textBox2.AppendText(a.ToString() + " - " + str[1] + "\n");
@@ -44,6 +40,15 @@ namespace 규파일
 		
 		void Panel1Paint(object sender, PaintEventArgs e)
 		{
+			branch = new int[KyuTxt.Length];
+			for(int a = 0; a < KyuTxt.Length; a++){
+				string[] str = KyuTxt[a].Split(new string[] {@"!%("}, StringSplitOptions.None);
+				string[] str2 = str[1].Split(new string[] {@"$%^"}, StringSplitOptions.None);
+				
+				branch[a] = int.Parse(str2[0]);
+				Console.WriteLine(branch[a]);
+			}
+			
 			int HorizontalScroll = panel1.HorizontalScroll.Value;
 			Console.WriteLine(HorizontalScroll);
 			Graphics g = this.panel1.CreateGraphics();
@@ -55,44 +60,31 @@ namespace 규파일
 			StringFormat drawFormat = new StringFormat();
 			Font drawFont = new Font("바탕", 10);
 			
-            panel1.AutoScrollMinSize = new Size(KyuTxt.Length * 50 + 20, 0);
+            panel1.AutoScrollMinSize = new Size(KyuTxt.Length * 50 + 20, branch.Length * 30 + 20);
             
-            int Count = 0;
+            int[] Count = new int[branch.Length];
 			for(int a = 0; a < KyuTxt.Length; a++){
             	Console.WriteLine(a);
-				int y = 10;
+            	int y = 10 + (branch[a] * 30);
 				int x = 10;
 				
 				if(KyuTxt[a].Contains("&*(")){
 					string[] str = KyuTxt[a].Split(new string[] {"&*("}, StringSplitOptions.None);
 					int num1 = int.Parse(str[1]);
-					x += 50 * (num1 - Count + 1) - HorizontalScroll;
-					y += count(a) * 50;
+					Console.WriteLine(50 * Count[branch[num1]] + " " + 50 * Count[branch[a]]);
+					int branchLength = Count[branch[num1]];
+					x += 50 * (branchLength - (branchLength - num1)) + 50 * Count[branch[a]] - HorizontalScroll;
 					Console.WriteLine(x + " " +y);
-					
 				}
 				else{
-					x += 50 * (a - Count) - HorizontalScroll;
+					x += 50 * Count[branch[a]] - HorizontalScroll;
 				}
+				
+				Count[branch[a]]++;
 				Rectangle rec = new Rectangle(x, y, 40, 20);
             	g.DrawRectangle(p, rec);
             	g.DrawString(a.ToString(), drawFont, b, x, y+5, drawFormat);
 			}
-		}
-		
-		int count(int line){
-			int output = 0;
-			if(kyuTxt[line].Contains("&*(")){
-				char[] asdf = kyuTxt[line].ToCharArray();
-				for(int a = 0; a < asdf.Length; a++){
-					if(asdf[a] == '&' && asdf[a+1] == '*' && asdf[a+2] == '('){
-						output++;
-						a += 2;
-						Console.WriteLine("증가");
-					}
-				}
-			}
-			return output;
 		}
 	}
 }

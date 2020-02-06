@@ -30,6 +30,7 @@ namespace 규파일
 		string changeFileName;
 		string comment;
 		int fileNum = 0;
+		int branch = 0;
 		
 		void Button1Click(object sender, EventArgs e) // 새로운 분기 생성 - 입력완료
 		{
@@ -111,7 +112,8 @@ namespace 규파일
 			
 			using (StreamWriter outputFile = new StreamWriter(txtName, true))
 			{
-    			outputFile.WriteLine(FileName + " - " + copyFlie + @"$%^" + comment);
+    			outputFile.Write(FileName + " - " + copyFlie + @"!%(" + branch + @"$%^" + comment);
+    			outputFile.WriteLine();
 			}
 		}
 		
@@ -186,38 +188,9 @@ namespace 규파일
 			string copyFlie = Folderposition + FileName + extensionName;
 			System.IO.File.Copy(fileName, copyFlie, false);
 			
-			int count = 0;
-			bool isBranchName = false;
-			int[] branch = new int[100];
-			if(kyuTxt[fileNum].Contains("&*(")){
-				char[] asdf = kyuTxt[fileNum].ToCharArray();
-				for(int a = 0; a < asdf.Length; a++){
-					Console.WriteLine("count가 증가하지 않음");
-					if(isBranchName){
-						isBranchName = false;
-						branch[count - 1] = asdf[a];
-					}
-					if(asdf[a] == '&' && asdf[a+1] == '*' && asdf[a+2] == '('){
-						count++;
-						a += 2;
-						isBranchName = true;
-						Console.WriteLine("count가 증가");
-					}
-				}
-			}
-			
 			using (StreamWriter outputFile = new StreamWriter(txtName, true))
 			{
-				if(count != 0){
-					outputFile.Write(FileName + " - " + copyFlie + @"$%^" + comment);
-					for(int a = 0; a < count; a++){
-						outputFile.Write(@"&*(" + branch[a]);
-					}
-					outputFile.Write(@"&*(" + fileNum);
-				}
-				else{
-    				outputFile.Write(FileName + " - " + copyFlie + @"$%^" + comment + @"&*(" + fileNum);
-				}
+				outputFile.Write(FileName + " - " + copyFlie + @"!%(" + branch + @"$%^" + comment + @"&*(" + fileNum);
     			outputFile.WriteLine();
 			}
 		}
@@ -225,6 +198,16 @@ namespace 규파일
 		void TextBox4TextChanged(object sender, EventArgs e) // 코멘트
 		{
 			comment = textBox4.Text;
+		}
+		
+		void TextBox7TextChanged(object sender, EventArgs e)
+		{
+			try{
+				branch = int.Parse(textBox7.Text.ToString());
+			}
+			catch{
+				MessageBox.Show("가지위치를 다시 입력해주세요.");
+			}
 		}
 	}
 }
