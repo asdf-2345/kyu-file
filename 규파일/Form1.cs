@@ -76,32 +76,30 @@ namespace 규파일
             	int y = 10 + (branch[a] * 30);
 				int x = 10;
 				
-				if(KyuTxt[a].Contains("&*(")){
-					string[] str = KyuTxt[a].Split(new string[] {"&*("}, StringSplitOptions.None);
-					int num1 = int.Parse(str[1]);
-					if(branchCheck[branch[a]] == false){
-						branchCheck[branch[a]] = true;
-						int branchLength = X[branch[num1]];
-						X[branch[a]] = positionX[num1];
-						x += X[branch[a]] - HorizontalScroll;
-						
-						//선긋기 (위쪽으로)
-						Point point1 = new Point(x + 20, y);
-						Point point2 = new Point(x + 20, y-10);
-						g.DrawLine(p, point1, point2);
-						
-						drawLine(x, y, p, g);
+				if(branchCheck[branch[a]] == false){
+					int num1 = 0;
+					if(KyuTxt[a].Contains("&*(")){
+						string[] str = KyuTxt[a].Split(new string[] {"&*("}, StringSplitOptions.None);
+						num1 = int.Parse(str[1]);
 					}
-					else{
-						X[branch[a]] += 50;
-						x += X[branch[a]] - HorizontalScroll;
+					branchCheck[branch[a]] = true;
+					int branchLength = X[branch[num1]];
+					X[branch[a]] = positionX[num1];
+					x += X[branch[a]] - HorizontalScroll;
+					
+					//선긋기 (위쪽으로)
+					if(branch[a] != 0){
+						Point point1 = new Point(x + 20, y);
+						Console.WriteLine(10 + ((branch[a] - branch[num1] - 1) * 30));
+						Point point2 = new Point(x + 20, y - (10 + ((branch[a] - branch[num1] - 1) * 30)));
+						g.DrawLine(p, point1, point2);
 						
 						drawLine(x, y, p, g);
 					}
 				}
 				else{
-					x += X[branch[a]] - HorizontalScroll;
 					X[branch[a]] += 50;
+					x += X[branch[a]] - HorizontalScroll;
 					
 					drawLine(x, y, p, g);
 				}

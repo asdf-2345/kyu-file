@@ -34,27 +34,7 @@ namespace 규파일
 		
 		void Button1Click(object sender, EventArgs e) // 새로운 분기 생성 - 입력완료
 		{
-			string str = textBox5.Text;
-			try{
-				fileNum = int.Parse(str);
-				try{
-					changeFileName = kyuTxt[fileNum];
-					
-					string[] str2 = changeFileName.Split('-');
-					changeFileName = str2[1].Trim();
-					string[] str3 = txtName.Split(new string[] {"$%^"}, StringSplitOptions.None);
-					changeFileName = str3[0];
-					textBox6.Text = "새로운 가지를 생성할 버젼 : " + changeFileName;
-				}
-				catch{
-					MessageBox.Show("다시입력해주세요", "오류");
-					return;
-				}
-			}
-			catch{
-				MessageBox.Show("숫자만 입력해주세요", "오류");
-				return;
-			}
+			
 		}
 		
 		void Button2Click(object sender, EventArgs e) // 저장파일지정
@@ -183,13 +163,25 @@ namespace 규파일
 		{
 			kyuTxt = File.ReadAllLines(txtName);
 			FileName = kyuTxt.Length;
-								
+			
+			Form2 form2 = new Form2();
+			form2.kyuTxt = kyuTxt;
+			form2.ShowDialog();
+			int newBranch = form2.NewBranch;
+			fileNum = form2.FileName;
 			string copyFlie = Folderposition + FileName + extensionName;
-			System.IO.File.Copy(fileName, copyFlie, false);
+			
+			try{
+				System.IO.File.Copy(fileName, copyFlie, false);
+			}
+			catch{
+				MessageBox.Show("저장할파일을 먼저 선택해주세요");
+				return;
+			}
 			
 			using (StreamWriter outputFile = new StreamWriter(txtName, true))
 			{
-				outputFile.Write(FileName + " - " + copyFlie + @"!%(" + branch + @"$%^" + comment + @"&*(" + fileNum);
+				outputFile.Write(FileName + " - " + copyFlie + @"!%(" + newBranch + @"$%^" + comment + @"&*(" + fileNum);
     			outputFile.WriteLine();
 			}
 		}

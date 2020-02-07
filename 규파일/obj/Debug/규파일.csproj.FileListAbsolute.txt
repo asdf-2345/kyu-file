@@ -7,3 +7,14 @@ F:\a\규파일\규파일\obj\Debug\규파일.csproj.GenerateResource.Cache
 F:\a\규파일\규파일\obj\Debug\규파일.exe
 F:\a\규파일\규파일\obj\Debug\규파일.pdb
 F:\a\규파일\규파일\obj\Debug\규파일.Form1.resources
+D:\a\규파일\규파일\bin\Debug\규파일.exe.config
+D:\a\규파일\규파일\bin\Debug\규파일.exe
+D:\a\규파일\규파일\bin\Debug\규파일.pdb
+D:\a\규파일\규파일\obj\Debug\규파일.csprojResolveAssemblyReference.cache
+D:\a\규파일\규파일\obj\Debug\규파일.Form1.resources
+D:\a\규파일\규파일\obj\Debug\규파일.MainForm.resources
+D:\a\규파일\규파일\obj\Debug\규파일.csproj.GenerateResource.Cache
+D:\a\규파일\규파일\obj\Debug\규파일.exe
+D:\a\규파일\규파일\obj\Debug\규파일.pdb
+D:\a\규파일\규파일\obj\Debug\규파일.Form2.resources
+F:\a\규파일\규파일\obj\Debug\규파일.Form2.resources
