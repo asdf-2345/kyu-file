@@ -44,6 +44,21 @@ namespace 규파일
 			g.DrawLine(p, point1, point2);
 		}
 		
+		Color[] getRandomColor(Color[] PenColor){ // 선겹칠때 햇갈리니까 색깔변경
+			PenColor[0] =  Color.FromArgb(0, 0, 0);
+			PenColor[1] =  Color.FromArgb(255, 0, 0);
+			PenColor[2] =  Color.FromArgb(0, 255, 0);
+			PenColor[3] =  Color.FromArgb(0, 0, 255);
+			PenColor[4] =  Color.FromArgb(255, 100, 0);
+			PenColor[5] =  Color.FromArgb(255, 0 , 100);
+			PenColor[6] =  Color.FromArgb(100, 255, 0);
+			PenColor[7] =  Color.FromArgb(0, 255, 100);
+			PenColor[8] =  Color.FromArgb(100, 0, 255);
+			PenColor[9] =  Color.FromArgb(0, 100, 255);
+			
+			return PenColor;
+		}
+		
 		void Panel1Paint(object sender, PaintEventArgs e)
 		{
 			branch = new int[KyuTxt.Length];
@@ -55,14 +70,13 @@ namespace 규파일
 				Console.WriteLine(branch[a]);
 			}
 			
+			Color[] PenColor = new Color[10];
+			PenColor = getRandomColor(PenColor);
 			int HorizontalScroll = panel1.HorizontalScroll.Value;
 			Console.WriteLine(HorizontalScroll);
 			Graphics g = this.panel1.CreateGraphics();
 			
 			g.Clear(Color.White); // 지우고 다시 그려야 전에 있던 도형이 안남아있음
-			Pen p = new Pen(Color.Black, 3);
-            
-			SolidBrush b = new SolidBrush(Color.Black);
 			StringFormat drawFormat = new StringFormat();
 			Font drawFont = new Font("바탕", 10);
 			
@@ -72,6 +86,8 @@ namespace 규파일
             int[] positionX = new int[branch.Length];
             bool[] branchCheck = new bool[KyuTxt.Length];
 			for(int a = 0; a < KyuTxt.Length; a++){
+            	Pen p = new Pen(PenColor[branch[a] % 10], 3);
+            	SolidBrush b = new SolidBrush(PenColor[branch[a] % 10]);
             	Console.WriteLine(a);
             	int y = 10 + (branch[a] * 30);
 				int x = 10;
@@ -93,9 +109,8 @@ namespace 규파일
 						Console.WriteLine(10 + ((branch[a] - branch[num1] - 1) * 30));
 						Point point2 = new Point(x + 20, y - (10 + ((branch[a] - branch[num1] - 1) * 30)));
 						g.DrawLine(p, point1, point2);
-						
-						drawLine(x, y, p, g);
 					}
+					drawLine(x, y, p, g);
 				}
 				else{
 					X[branch[a]] += 50;
