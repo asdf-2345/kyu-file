@@ -68,18 +68,21 @@ namespace 규파일
 		void Panel1Paint(object sender, PaintEventArgs e)
 		{
 			branch = new int[KyuTxt.Length];
+			int maxBranchLength = 0;
 			for(int a = 0; a < KyuTxt.Length; a++){
 				string[] str = KyuTxt[a].Split(new string[] {@"!%("}, StringSplitOptions.None);
 				string[] str2 = str[1].Split(new string[] {@"$%^"}, StringSplitOptions.None);
 				
 				branch[a] = int.Parse(str2[0]);
 				Console.WriteLine(branch[a]);
+				if(branch[a] > maxBranchLength){
+					maxBranchLength = branch[a];
+				}
 			}
-			
 			Color[] PenColor = new Color[10];
 			PenColor = getRandomColor(PenColor);
 			int HorizontalScroll = panel1.HorizontalScroll.Value;
-			Console.WriteLine(HorizontalScroll);
+			int VerticalScroll = panel1.VerticalScroll.Value;
 			Graphics g = this.panel1.CreateGraphics();
 			
 			g.Clear(Color.White); // 지우고 다시 그려야 전에 있던 도형이 안남아있음
@@ -88,13 +91,12 @@ namespace 규파일
 			
             panel1.AutoScrollMinSize = new Size(KyuTxt.Length * 50 + 20, branch.Length * 30 + 20);
             
-            int[] X = new int[branch.Length];
-            int[] positionX = new int[branch.Length];
-            bool[] branchCheck = new bool[KyuTxt.Length];
+            int[] X = new int[KyuTxt.Length + 1];
+            int[] positionX = new int[KyuTxt.Length + 1];
+            bool[] branchCheck = new bool[maxBranchLength + 1];
 			for(int a = 0; a < KyuTxt.Length; a++){
             	Pen p = new Pen(PenColor[branch[a] % 10], 3);
             	SolidBrush b = new SolidBrush(PenColor[branch[a] % 10]);
-            	Console.WriteLine(a);
             	int y = 10 + (branch[a] * 30);
 				int x = 10;
 				
@@ -112,7 +114,6 @@ namespace 규파일
 					//선긋기 (위쪽으로)
 					if(branch[a] != 0){
 						Point point1 = new Point(x + 20, y);
-						Console.WriteLine(10 + ((branch[a] - branch[num1] - 1) * 30));
 						Point point2 = new Point(x + 20, y - (10 + ((branch[a] - branch[num1] - 1) * 30)));
 						g.DrawLine(p, point1, point2);
 					}
@@ -126,7 +127,6 @@ namespace 규파일
 				}
 				
 				positionX[a] = X[branch[a]];
-				Console.WriteLine(x+" "+y);
 				Rectangle rec = new Rectangle(x, y, 40, 20);
             	g.DrawRectangle(p, rec);
             	g.DrawString(a.ToString(), drawFont, b, x, y+5, drawFormat);
