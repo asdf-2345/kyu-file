@@ -43,8 +43,6 @@ namespace 규파일
 			this.label3 = new System.Windows.Forms.Label();
 			this.button4 = new System.Windows.Forms.Button();
 			this.button5 = new System.Windows.Forms.Button();
-			this.label4 = new System.Windows.Forms.Label();
-			this.textBox1 = new System.Windows.Forms.TextBox();
 			this.label5 = new System.Windows.Forms.Label();
 			this.button6 = new System.Windows.Forms.Button();
 			this.textBox2 = new System.Windows.Forms.TextBox();
@@ -124,23 +122,6 @@ namespace 규파일
 			this.button5.Text = "저장시작";
 			this.button5.UseVisualStyleBackColor = true;
 			this.button5.Click += new System.EventHandler(this.Button5Click);
-			// 
-			// label4
-			// 
-			this.label4.Location = new System.Drawing.Point(12, 109);
-			this.label4.Name = "label4";
-			this.label4.Size = new System.Drawing.Size(146, 14);
-			this.label4.TabIndex = 8;
-			this.label4.Text = "확장자명을 입력해주세요.";
-			// 
-			// textBox1
-			// 
-			this.textBox1.Location = new System.Drawing.Point(165, 106);
-			this.textBox1.Name = "textBox1";
-			this.textBox1.Size = new System.Drawing.Size(301, 21);
-			this.textBox1.TabIndex = 9;
-			this.textBox1.Text = "예) .mp4 .txt등";
-			this.textBox1.TextChanged += new System.EventHandler(this.TextBox1TextChanged);
 			// 
 			// label5
 			// 
@@ -287,8 +268,6 @@ namespace 규파일
 			this.Controls.Add(this.textBox2);
 			this.Controls.Add(this.button6);
 			this.Controls.Add(this.label5);
-			this.Controls.Add(this.textBox1);
-			this.Controls.Add(this.label4);
 			this.Controls.Add(this.button5);
 			this.Controls.Add(this.button4);
 			this.Controls.Add(this.label3);
@@ -317,8 +296,6 @@ namespace 규파일
 		private System.Windows.Forms.TextBox textBox2;
 		private System.Windows.Forms.Button button6;
 		private System.Windows.Forms.Label label5;
-		private System.Windows.Forms.TextBox textBox1;
-		private System.Windows.Forms.Label label4;
 		private System.Windows.Forms.Button button5;
 		private System.Windows.Forms.Button button4;
 		private System.Windows.Forms.Label label3;

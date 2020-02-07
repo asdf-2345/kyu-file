@@ -32,6 +32,12 @@ namespace 규파일
 		int fileNum = 0;
 		int branch = 0;
 		
+		string getExtension(string _fileName){
+			int extensionPoint = _fileName.LastIndexOf("."); // (전체길이) - (뒤에서 '.' 찾은값)
+			string output = _fileName.Substring(extensionPoint);
+			return output;
+		}
+		
 		void Button1Click(object sender, EventArgs e) // 가지입력 완료
 		{
 			if(textBox7.Text.ToString() == ""){
@@ -122,6 +128,7 @@ namespace 규파일
 			kyuTxt = File.ReadAllLines(txtName);
 			FileName = kyuTxt.Length;
 			
+			extensionName = getExtension(fileName);
 			string copyFlie = Folderposition + FileName + extensionName;
 			Console.WriteLine(copyFlie);
 			label5.Text = "저장된 파일 : \n" + copyFlie;
@@ -132,11 +139,6 @@ namespace 규파일
     			outputFile.Write(FileName + " - " + copyFlie + @"!%(" + branch + @"$%^" + comment);
     			outputFile.WriteLine();
 			}
-		}
-		
-		void TextBox1TextChanged(object sender, EventArgs e)
-		{
-			extensionName = textBox1.Text;
 		}
 		
 		void Label5Click(object sender, EventArgs e)
@@ -206,6 +208,7 @@ namespace 규파일
 			form2.ShowDialog();
 			int newBranch = form2.NewBranch;
 			fileNum = form2.FileName;
+			extensionName = getExtension(fileName);
 			string copyFlie = Folderposition + FileName + extensionName;
 			
 			try{
