@@ -65,20 +65,25 @@ namespace 규파일
 			return PenColor;
 		}
 		
-		void Panel1Paint(object sender, PaintEventArgs e)
-		{
-			branch = new int[KyuTxt.Length];
-			int maxBranchLength = 0;
+		int maxBranchLength = 0;
+		
+		void BranchConfirmation(){
 			for(int a = 0; a < KyuTxt.Length; a++){
 				string[] str = KyuTxt[a].Split(new string[] {@"!%("}, StringSplitOptions.None);
 				string[] str2 = str[1].Split(new string[] {@"$%^"}, StringSplitOptions.None);
 				
 				branch[a] = int.Parse(str2[0]);
-				Console.WriteLine(branch[a]);
 				if(branch[a] > maxBranchLength){
 					maxBranchLength = branch[a];
 				}
 			}
+		}
+		
+		void Panel1Paint(object sender, PaintEventArgs e)
+		{
+			branch = new int[KyuTxt.Length];
+			BranchConfirmation();
+			
 			Color[] PenColor = new Color[10];
 			PenColor = getRandomColor(PenColor);
 			int HorizontalScroll = panel1.HorizontalScroll.Value;

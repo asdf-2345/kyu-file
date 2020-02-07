@@ -32,13 +32,15 @@ namespace 규파일
 		int fileNum = 0;
 		int branch = 0;
 		
+		// 뭔 확장자인지 알아냄
 		string getExtension(string _fileName){
 			int extensionPoint = _fileName.LastIndexOf("."); // (전체길이) - (뒤에서 '.' 찾은값)
 			string output = _fileName.Substring(extensionPoint);
 			return output;
 		}
 		
-		void Button1Click(object sender, EventArgs e) // 가지입력 완료
+		// 가지입력 완료
+		void Button1Click(object sender, EventArgs e) 
 		{
 			if(textBox7.Text.ToString() == ""){
 				return;
@@ -80,7 +82,8 @@ namespace 규파일
 			}
 		}
 		
-		void Button2Click(object sender, EventArgs e) // 저장파일지정
+		// 저장파일지정
+		void Button2Click(object sender, EventArgs e) 
 		{
 			OpenFileDialog ofd = new OpenFileDialog();
 
@@ -91,7 +94,8 @@ namespace 규파일
             label2.Text = "현재 선택한 파일 : " + fileName;
 		}
 		
-		void Button3Click(object sender, EventArgs e) //규파일.txt 파일찾기
+		//규파일.txt 파일찾기
+		void Button3Click(object sender, EventArgs e) 
 		{
 			OpenFileDialog ofd = new OpenFileDialog();
 
@@ -111,7 +115,8 @@ namespace 규파일
             }
 		}
 		
-		void Button4Click(object sender, EventArgs e)//버젼 전체보기
+		//버젼 전체보기
+		void Button4Click(object sender, EventArgs e)
 		{
 			try{
 				Form1 form1 = new Form1();
@@ -123,7 +128,8 @@ namespace 규파일
 			}
 		}
 		
-		void Button5Click(object sender, EventArgs e) // 저장시작
+		// 저장시작
+		void Button5Click(object sender, EventArgs e) 
 		{
 			kyuTxt = File.ReadAllLines(txtName);
 			FileName = kyuTxt.Length;
@@ -151,7 +157,8 @@ namespace 규파일
 			
 		}
 		
-		void Button6Click(object sender, EventArgs e) // 규파일이 처음입니다
+		// 규파일이 처음입니다
+		void Button6Click(object sender, EventArgs e) 
 		{
 			MessageBox.Show("저장소위치를 지정해주세요.");
 			
@@ -165,7 +172,8 @@ namespace 규파일
 			MessageBox.Show("규파일.txt가 지정하신 위치에 생성되었습니다.");
 		}
 		
-		void Button7Click(object sender, EventArgs e) // 예전버젼 파일 덮어쓰기
+		// 예전버젼 파일 덮어쓰기
+		void Button7Click(object sender, EventArgs e) 
 		{
 			try{
 				File.Copy(changeFileName, fileName, true);
@@ -175,7 +183,8 @@ namespace 규파일
 			}
 		}
 		
-		void Button8Click(object sender, EventArgs e) // 예전버젼 입력완료
+		// 예전버젼 입력완료
+		void Button8Click(object sender, EventArgs e) 
 		{
 			string str = textBox3.Text;
 			try{
@@ -198,7 +207,8 @@ namespace 규파일
 			}			
 		}
 		
-		void Button9Click(object sender, EventArgs e) // 새로운 가지 생성
+		// 새로운 가지 생성
+		void Button9Click(object sender, EventArgs e) 
 		{
 			kyuTxt = File.ReadAllLines(txtName);
 			FileName = kyuTxt.Length;
@@ -226,7 +236,8 @@ namespace 규파일
 			}
 		}
 		
-		void TextBox4TextChanged(object sender, EventArgs e) // 코멘트
+		// 코멘트
+		void TextBox4TextChanged(object sender, EventArgs e)
 		{
 			comment = textBox4.Text;
 		}
