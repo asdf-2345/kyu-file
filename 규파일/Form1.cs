@@ -31,10 +31,16 @@ namespace 규파일
 		{
 			textBox2.ScrollBars = ScrollBars.Vertical;
 			
-			for(int a = 0; a < KyuTxt.Length; a++){
-				string[] str = KyuTxt[a].Split(new string[] {"$%^"}, StringSplitOptions.None);
-				textBox2.AppendText(a.ToString() + " - " + str[1] + "\n");
-			}	
+			try{
+				for(int a = 0; a < KyuTxt.Length; a++){
+					string[] str = KyuTxt[a].Split(new string[] {"$%^"}, StringSplitOptions.None);
+					textBox2.AppendText(a.ToString() + " - " + str[1] + "\n");
+				}
+			}
+			catch{
+				MessageBox.Show("규파일.txt를 선택하지 않았거나 다른 오류가 있습니다.", "오류");
+				this.Close();
+			}
 		}
 		
 		void drawLine(int x, int y, Pen p, Graphics g){

@@ -32,9 +32,46 @@ namespace 규파일
 		int fileNum = 0;
 		int branch = 0;
 		
-		void Button1Click(object sender, EventArgs e) // 새로운 분기 생성 - 입력완료
+		void Button1Click(object sender, EventArgs e) // 가지입력 완료
 		{
+			if(textBox7.Text.ToString() == ""){
+				return;
+			}
 			
+			try{
+				branch = int.Parse(textBox7.Text.ToString());
+			}
+			catch{
+				MessageBox.Show("가지위치를 다시 입력해주세요.");
+			}
+			
+			try{
+				kyuTxt = File.ReadAllLines(txtName);
+				
+				int[] Branch = new int[kyuTxt.Length];
+				for(int a = 0; a < kyuTxt.Length; a++){
+					string[] str = kyuTxt[a].Split(new string[] {@"!%("}, StringSplitOptions.None);
+					string[] str2 = str[1].Split(new string[] {@"$%^"}, StringSplitOptions.None);
+					
+					Branch[a] = int.Parse(str2[0]);
+					Console.WriteLine(Branch[a]);
+				}
+				
+				for(int a = 0; a < kyuTxt.Length; a++){
+					if(Branch[a] == branch){
+						label8.Text = "현재 가지 : " + branch;
+						return;
+					}
+				}
+				MessageBox.Show("없는 가지번호입니다.");
+				branch = 0;
+				return;
+			}
+			catch{
+				MessageBox.Show("규파일을 선택하지 않으셨거나 다른 오류가 발생하였습니다.", "오류");
+				textBox7.Text = "0";
+				branch = 0;
+			}
 		}
 		
 		void Button2Click(object sender, EventArgs e) // 저장파일지정
@@ -193,12 +230,7 @@ namespace 규파일
 		
 		void TextBox7TextChanged(object sender, EventArgs e)
 		{
-			try{
-				branch = int.Parse(textBox7.Text.ToString());
-			}
-			catch{
-				MessageBox.Show("가지위치를 다시 입력해주세요.");
-			}
+			
 		}
 	}
 }
