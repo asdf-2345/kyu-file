@@ -81,6 +81,7 @@ namespace 규파일
 		
 		void Panel1Paint(object sender, PaintEventArgs e)
 		{
+			try{
 			branch = new int[KyuTxt.Length];
 			BranchConfirmation();
 			
@@ -95,14 +96,13 @@ namespace 규파일
 			Font drawFont = new Font("바탕", 10);
 			
             panel1.AutoScrollMinSize = new Size(KyuTxt.Length * 50 + 20, branch.Length * 30 + 20);
-            
-            int[] X = new int[KyuTxt.Length + 1];
+            int[] X = new int[maxBranchLength + 1];
             int[] positionX = new int[KyuTxt.Length + 1];
             bool[] branchCheck = new bool[maxBranchLength + 1];
 			for(int a = 0; a < KyuTxt.Length; a++){
             	Pen p = new Pen(PenColor[branch[a] % 10], 3);
             	SolidBrush b = new SolidBrush(PenColor[branch[a] % 10]);
-            	int y = 10 + (branch[a] * 30);
+            	int y = 10 + (branch[a] * 30) - VerticalScroll;
 				int x = 10;
 				
 				if(branchCheck[branch[a]] == false){
@@ -112,7 +112,6 @@ namespace 규파일
 						num1 = int.Parse(str[1]);
 					}
 					branchCheck[branch[a]] = true;
-					int branchLength = X[branch[num1]];
 					X[branch[a]] = positionX[num1];
 					x += X[branch[a]] - HorizontalScroll;
 					
@@ -135,6 +134,10 @@ namespace 규파일
 				Rectangle rec = new Rectangle(x, y, 40, 20);
             	g.DrawRectangle(p, rec);
             	g.DrawString(a.ToString(), drawFont, b, x, y+5, drawFormat);
+			}
+			}
+			catch(Exception ex){
+				MessageBox.Show(ex.ToString());
 			}
 		}
 	}
