@@ -56,9 +56,13 @@ namespace 규파일
 				string[] str2 = str[1].Split(new string[] {@"$%^"}, StringSplitOptions.None);
 				
 				if(int.Parse(str2[0]) == newBranch){
-					MessageBox.Show("이미있는 가지 이름 입니다.");
+					MessageBox.Show("이미있는 가지번호 입니다.");
 					return;
 				}
+			}
+			if(fileName >= KyuTxt.Length){
+				MessageBox.Show("없는 파일번호입니다.");
+				return;
 			}
 			this.Close();
 		}
