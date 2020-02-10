@@ -163,7 +163,6 @@ namespace 규파일
 		
 		void MainFormLoad(object sender, EventArgs e)
 		{
-			Properties.Settings1.Default.Reset();
 			txtName = Properties.Settings1.Default.kyuFilePosition;
 			try{
 				kyuTxt = File.ReadAllLines(txtName);
@@ -225,8 +224,6 @@ namespace 규파일
 					changeFileName = kyuTxt[FileNum];
 					
 					string[] str2 = changeFileName.Split('-');
-					changeFileName = str2[1].Trim();
-					textBox2.Text = "불러올 이전버젼 : " + changeFileName;
 				}
 				catch{
 					MessageBox.Show("다시입력해주세요", "오류");

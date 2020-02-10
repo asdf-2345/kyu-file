@@ -45,7 +45,6 @@ namespace 규파일
 			this.button5 = new System.Windows.Forms.Button();
 			this.label5 = new System.Windows.Forms.Label();
 			this.button6 = new System.Windows.Forms.Button();
-			this.textBox2 = new System.Windows.Forms.TextBox();
 			this.button7 = new System.Windows.Forms.Button();
 			this.button8 = new System.Windows.Forms.Button();
 			this.textBox3 = new System.Windows.Forms.TextBox();
@@ -109,7 +108,7 @@ namespace 규파일
 			this.button4.Name = "button4";
 			this.button4.Size = new System.Drawing.Size(112, 23);
 			this.button4.TabIndex = 6;
-			this.button4.Text = "버젼 전체보기";
+			this.button4.Text = "버전 전체보기";
 			this.button4.UseVisualStyleBackColor = true;
 			this.button4.Click += new System.EventHandler(this.Button4Click);
 			// 
@@ -142,28 +141,19 @@ namespace 규파일
 			this.button6.UseVisualStyleBackColor = true;
 			this.button6.Click += new System.EventHandler(this.Button6Click);
 			// 
-			// textBox2
-			// 
-			this.textBox2.Location = new System.Drawing.Point(338, 205);
-			this.textBox2.Name = "textBox2";
-			this.textBox2.ReadOnly = true;
-			this.textBox2.Size = new System.Drawing.Size(259, 21);
-			this.textBox2.TabIndex = 12;
-			this.textBox2.Text = "불러올 이전버젼 : ";
-			// 
 			// button7
 			// 
-			this.button7.Location = new System.Drawing.Point(455, 176);
+			this.button7.Location = new System.Drawing.Point(454, 235);
 			this.button7.Name = "button7";
 			this.button7.Size = new System.Drawing.Size(142, 23);
 			this.button7.TabIndex = 13;
-			this.button7.Text = "예전버젼으로 덮어쓰기";
+			this.button7.Text = "예전버전으로 덮어쓰기";
 			this.button7.UseVisualStyleBackColor = true;
 			this.button7.Click += new System.EventHandler(this.Button7Click);
 			// 
 			// button8
 			// 
-			this.button8.Location = new System.Drawing.Point(522, 232);
+			this.button8.Location = new System.Drawing.Point(522, 206);
 			this.button8.Name = "button8";
 			this.button8.Size = new System.Drawing.Size(75, 23);
 			this.button8.TabIndex = 14;
@@ -173,18 +163,18 @@ namespace 규파일
 			// 
 			// textBox3
 			// 
-			this.textBox3.Location = new System.Drawing.Point(440, 234);
+			this.textBox3.Location = new System.Drawing.Point(440, 208);
 			this.textBox3.Name = "textBox3";
 			this.textBox3.Size = new System.Drawing.Size(76, 21);
 			this.textBox3.TabIndex = 15;
 			// 
 			// label6
 			// 
-			this.label6.Location = new System.Drawing.Point(220, 239);
+			this.label6.Location = new System.Drawing.Point(398, 186);
 			this.label6.Name = "label6";
-			this.label6.Size = new System.Drawing.Size(218, 12);
+			this.label6.Size = new System.Drawing.Size(198, 12);
 			this.label6.TabIndex = 16;
-			this.label6.Text = "불러오실 버전의 숫자를 입력해주세요";
+			this.label6.Text = "불러올 버전의 번호를 입력해주세요";
 			// 
 			// textBox4
 			// 
@@ -265,7 +255,6 @@ namespace 규파일
 			this.Controls.Add(this.textBox3);
 			this.Controls.Add(this.button8);
 			this.Controls.Add(this.button7);
-			this.Controls.Add(this.textBox2);
 			this.Controls.Add(this.button6);
 			this.Controls.Add(this.label5);
 			this.Controls.Add(this.button5);
@@ -293,7 +282,6 @@ namespace 규파일
 		private System.Windows.Forms.TextBox textBox3;
 		private System.Windows.Forms.Button button8;
 		private System.Windows.Forms.Button button7;
-		private System.Windows.Forms.TextBox textBox2;
 		private System.Windows.Forms.Button button6;
 		private System.Windows.Forms.Label label5;
 		private System.Windows.Forms.Button button5;
