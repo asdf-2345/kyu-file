@@ -91,6 +91,8 @@ namespace 규파일
             ofd.ShowDialog();
 
             fileName = ofd.FileName;
+            Properties.Settings1.Default.filePosition = fileName;
+            Properties.Settings1.Default.Save();
             label2.Text = "현재 선택한 파일 : " + fileName;
 		}
 		
@@ -109,6 +111,9 @@ namespace 규파일
             	string[] str = txtName.Split(new string[] {"규파일.txt"}, StringSplitOptions.None);
             	Folderposition = str[0];
             	label1.Text = Folderposition;
+            	Properties.Settings1.Default.kyuFilePosition = txtName; // 규파일.txt의 위치를 저장함
+            	Properties.Settings1.Default.FolderPosition = Folderposition; // 저장소위치를 저장함
+            	Properties.Settings1.Default.Save();
             }
             else{
             	MessageBox.Show("선택하신 파일이 규파일이 맞습니까?", "다시 선택해주십시오");
@@ -119,6 +124,7 @@ namespace 규파일
 		void Button4Click(object sender, EventArgs e)
 		{
 			try{
+				kyuTxt = File.ReadAllLines(txtName);
 				Form1 form1 = new Form1();
 				form1.kyuTxt = kyuTxt;
 				form1.Show();
@@ -154,7 +160,22 @@ namespace 규파일
 		
 		void MainFormLoad(object sender, EventArgs e)
 		{
-			
+			txtName = Properties.Settings1.Default.kyuFilePosition;
+			try{
+				kyuTxt = File.ReadAllLines(txtName);
+				label3.Text = "현재 선택된 파일 : " + txtName;
+			}
+			catch{
+				MessageBox.Show("규파일이 처음이거나 잘못 설정된 것 같습니다.");
+			}
+            Folderposition = Properties.Settings1.Default.FolderPosition;
+            label1.Text = Folderposition;
+            
+            fileName = Properties.Settings1.Default.filePosition;
+            label2.Text = "현재 선택된 파일 : " + fileName;
+            
+            Properties.Settings1.Default.Save();
+            Console.WriteLine("저장되었습니다.");
 		}
 		
 		// 규파일이 처음입니다
